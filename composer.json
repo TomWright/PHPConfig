@@ -1,0 +1,19 @@
+{
+    "name": "tomwright/php-config",
+    "description": "A simple class to make configs easy.",
+    "authors": [
+        {
+            "name": "Tom Wright",
+            "email": "contact@tomwright.me"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "*",
+        "tomwright/singleton": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "TomWright\\PHPConfig\\": "src/"
+        }
+    }
+}
