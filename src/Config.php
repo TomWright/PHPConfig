@@ -16,12 +16,18 @@ class Config
      */
     protected $items;
 
+    /**
+     * @var string
+     */
+    protected $separator;
+
 
     /**
      * Config constructor.
      */
     public function __construct()
     {
+        $this->setSeparator('.');
         $this->setItems(array());
     }
 
@@ -50,9 +56,11 @@ class Config
      * @param string $item
      * @return string
      */
-    protected function stripMultipleDotsFromItem($item)
+    protected function stripMultipleSeparatorsFromItem($item)
     {
-        return preg_replace('/\.{2,}/', '', $item);
+        $separator = $this->getSeparator();
+        $safeSeparator = preg_quote($separator);
+        return preg_replace('/' . $safeSeparator . '{2,}/', $this->getSeparator(), $item);
     }
 
 
@@ -63,8 +71,8 @@ class Config
      */
     public function setItem($item, $value)
     {
-        $item = $this->stripMultipleDotsFromItem($item);
-        $splitItems = explode('.', $item);
+        $item = $this->stripMultipleSeparatorsFromItem($item);
+        $splitItems = explode($this->getSeparator(), $item);
 
         $totalSplitItems = count($splitItems);
 
@@ -100,12 +108,12 @@ class Config
      */
     public function getItem($item, $default = null, $items = null)
     {
-        $item = $this->stripMultipleDotsFromItem($item);
+        $item = $this->stripMultipleSeparatorsFromItem($item);
         if ($items === null) {
             $items = $this->getItems();
         }
         $result = null;
-        $dotPos = strpos($item, '.');
+        $dotPos = strpos($item, $this->getSeparator());
 
         if ($dotPos === false) {
             $result = $this->extractItemFromItems($item, $items);
@@ -135,6 +143,26 @@ class Config
             $result = $items[$item];
         }
         return $result;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getSeparator()
+    {
+        return $this->separator;
+    }
+
+
+    /**
+     * @param string $separator
+     * @return $this
+     */
+    public function setSeparator($separator)
+    {
+        $this->separator = $separator;
+        return $this;
     }
 
 }

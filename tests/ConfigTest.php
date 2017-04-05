@@ -9,13 +9,21 @@ class ConfigTest extends TestCase
 
     public function testConfigSetAndGet()
     {
-        $config = Config::getInstance();
+        $config = Config::getInstance(rand());
 
         $config->setItem('environment', 'first_environment');
         $this->assertEquals($config->getItem('environment'), 'first_environment');
 
         $config->setItem('some.config.item', 'my_value');
         $this->assertEquals($config->getItem('some.config.item'), 'my_value');
+    }
+
+    public function testConfigSetAndGetWithMultipleSeparators()
+    {
+        $config = Config::getInstance(rand());
+
+        $config->setItem('some....config..item', 'my_value');
+        $this->assertEquals($config->getItem('some..config.....item'), 'my_value');
     }
 
 }
