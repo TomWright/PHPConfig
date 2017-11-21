@@ -1,5 +1,6 @@
 <?php
 
+namespace TomWright\PHPConfig\Tests;
 
 use PHPUnit\Framework\TestCase;
 use TomWright\PHPConfig\Config;
@@ -9,21 +10,21 @@ class ConfigTest extends TestCase
 
     public function testConfigSetAndGet()
     {
-        $config = Config::getInstance(rand());
+        $config = new Config();
 
-        $config->setItem('environment', 'first_environment');
-        $this->assertEquals($config->getItem('environment'), 'first_environment');
+        $config->put('environment', 'first_environment');
+        $this->assertEquals($config->get('environment'), 'first_environment');
 
-        $config->setItem('some.config.item', 'my_value');
-        $this->assertEquals($config->getItem('some.config.item'), 'my_value');
+        $config->put('some.config.item', 'my_value');
+        $this->assertEquals($config->get('some.config.item'), 'my_value');
     }
 
     public function testConfigSetAndGetWithMultipleSeparators()
     {
-        $config = Config::getInstance(rand());
+        $config = new Config();
 
-        $config->setItem('some....config..item', 'my_value');
-        $this->assertEquals($config->getItem('some..config.....item'), 'my_value');
+        $config->put('some....config..item', 'my_value');
+        $this->assertEquals($config->get('some..config.....item'), 'my_value');
     }
 
 }

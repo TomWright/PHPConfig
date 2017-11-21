@@ -8,12 +8,16 @@
         }
     ],
     "require": {
-        "phpunit/phpunit": "*",
-        "tomwright/singleton": "*"
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "psr-4": {
             "TomWright\\PHPConfig\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TomWright\\PHPConfig\\Tests\\": "tests/"
         }
     }
 }
