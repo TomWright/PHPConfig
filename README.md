@@ -130,6 +130,7 @@ $config->get('some.value.from.my.reader');
 
 ### Existing Config Readers
 
-There are currently no existing config readers.
 If you would like to create a Config Reader please feel free. The only requirement is that you implement the `ConfigReader` interface.
 If you have already created a Config Reader and would like it to appear here, please submit a pull request.
+
+- [PHPConfigReader](https://github.com/TomWright/PHPConfigReader)
