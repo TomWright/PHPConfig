@@ -102,6 +102,12 @@ class Config
         $currentKeyIndex = 0;
         foreach ($keys as $currentKey) {
             $currentKeyIndex++;
+            $isLastKey = ($currentKeyIndex === $totalKeys);
+            if ($isLastKey) {
+                $store[$currentKey] = $value;
+                break;
+            }
+
             $subItem = $this->getFromStore($currentKey, $store, null);
             if ($subItem === null) {
                 $store[$currentKey] = [];
@@ -109,12 +115,7 @@ class Config
                 $store[$currentKey] = [$subItem];
             }
 
-            $isLastKey = ($currentKeyIndex == $totalKeys);
-            if ($isLastKey) {
-                $store[$currentKey] = $value;
-            } else {
-                $store =& $store[$currentKey];
-            }
+            $store =& $store[$currentKey];
         }
 
         return $this;
