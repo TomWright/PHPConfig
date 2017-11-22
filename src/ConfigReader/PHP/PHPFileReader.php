@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TomWright\PHPConfig\ConfigReader\PHPFile;
+namespace TomWright\PHPConfig\ConfigReader\PHP;
 
 
 use TomWright\PHPConfig\Config;

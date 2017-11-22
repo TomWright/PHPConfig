@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use TomWright\PHPConfig\Config;
 use TomWright\PHPConfig\ConfigReader\InvalidConfigFileException;
 use TomWright\PHPConfig\ConfigReader\InvalidFilePathException;
-use TomWright\PHPConfig\ConfigReader\PHPFile\PHPFileReader;
+use TomWright\PHPConfig\ConfigReader\PHP\PHPFileReader;
 
 class PHPFileReaderTest extends TestCase
 {
