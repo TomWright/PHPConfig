@@ -8,7 +8,7 @@ Reads config values from a PHP file in the form of an array.
 ```php
 $config = new \TomWright\PHPConfig\Config([
     'readers' => [
-        new \TomWright\PHPConfig\ConfigReader\PHPFile\PHPFileReader('/path/to/config.php'),
+        new \TomWright\PHPConfig\ConfigReader\PHP\PHPFileReader('/path/to/config.php'),
     ],
 ]);
 ```
