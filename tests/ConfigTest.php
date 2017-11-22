@@ -19,6 +19,21 @@ class ConfigTest extends TestCase
         $this->assertEquals($config->get('some.config.item'), 'my_value');
     }
 
+    public function testConfigPutAndGetWithObjects()
+    {
+        $config = new Config();
+
+        $obj = new \stdClass();
+        $obj->one = 'x';
+        $obj->two = new \stdClass();
+        $obj->two->a = 'b';
+
+        $config->put('item', $obj);
+
+        $this->assertEquals('x', $config->get('item.one'));
+        $this->assertEquals('b', $config->get('item.two.a'));
+    }
+
     public function testConfigSetAndGetWithMultipleSeparators()
     {
         $config = new Config();
