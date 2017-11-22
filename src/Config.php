@@ -3,6 +3,8 @@
 
 namespace TomWright\PHPConfig;
 
+use TomWright\PHPConfig\ConfigReader\ConfigReader;
+
 class Config
 {
 

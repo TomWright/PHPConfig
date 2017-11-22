@@ -1,8 +1,10 @@
 <?php
 
 
-namespace TomWright\PHPConfig;
+namespace TomWright\PHPConfig\ConfigReader;
 
+
+use TomWright\PHPConfig\Config;
 
 interface ConfigReader
 {

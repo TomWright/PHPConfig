@@ -6,83 +6,20 @@ namespace TomWright\PHPConfig\Tests;
 
 use PHPUnit\Framework\TestCase;
 use TomWright\PHPConfig\Config;
-use TomWright\PHPConfig\Tests\Mocks\MockFileConfigReader;
+use TomWright\PHPConfig\Tests\Mocks\StaticConfigReader;
 
 class ConfigReaderTest extends TestCase
 {
 
-    public function testSingleConfigReader()
+    public function testConfigReaderIsProcessed()
     {
         $config = new Config(
             [
-                'readers' => [new MockFileConfigReader(__DIR__ . '/resources/ConfigA.php')],
+                'readers' => [new StaticConfigReader()],
             ]
         );
         $this->assertEquals([
-            'config' => [
-                'a' => [
-                    'name' => 'Tom',
-                ],
-            ],
-        ], $config->getAll());
-
-
-        $config = new Config(
-            [
-                'readers' => [new MockFileConfigReader(__DIR__ . '/resources/ConfigB.php')],
-            ]
-        );
-        $this->assertEquals([
-            'config' => [
-                'b' => [
-                    'name' => 'Jim',
-                ],
-            ],
-        ], $config->getAll());
-    }
-
-    public function testMultipleConfigReaders()
-    {
-        $config = new Config(
-            [
-                'readers' => [
-                    new MockFileConfigReader(__DIR__ . '/resources/ConfigA.php'),
-                    new MockFileConfigReader(__DIR__ . '/resources/ConfigB.php'),
-                ],
-            ]
-        );
-        $this->assertEquals([
-            'config' => [
-                'a' => [
-                    'name' => 'Tom',
-                ],
-                'b' => [
-                    'name' => 'Jim',
-                ],
-            ],
-        ], $config->getAll());
-    }
-
-    public function testMultipleOverlappingConfigReaders()
-    {
-        $config = new Config(
-            [
-                'readers' => [
-                    new MockFileConfigReader(__DIR__ . '/resources/ConfigA.php'),
-                    new MockFileConfigReader(__DIR__ . '/resources/ConfigB.php'),
-                    new MockFileConfigReader(__DIR__ . '/resources/ConfigC.php'),
-                ],
-            ]
-        );
-        $this->assertEquals([
-            'config' => [
-                'a' => [
-                    'name' => 'Amelia',
-                ],
-                'b' => [
-                    'name' => 'Jess',
-                ],
-            ],
+            'my-config-key' => 'my-config-value',
         ], $config->getAll());
     }
 
