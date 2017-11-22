@@ -109,10 +109,8 @@ class Config
             }
 
             $subItem = $this->getFromStore($currentKey, $store, null);
-            if ($subItem === null) {
+            if ($subItem === null || (! is_array($subItem) && ! is_object($subItem))) {
                 $store[$currentKey] = [];
-            } elseif (! is_array($subItem) && ! is_object($subItem)) {
-                $store[$currentKey] = [$subItem];
             }
 
             $store =& $store[$currentKey];

@@ -55,4 +55,27 @@ class ConfigTest extends TestCase
         ], $config->getAll());
     }
 
+    public function testAddingMultipleValuesOnTopOfNonArrayValue()
+    {
+        $config = new Config();
+
+        $config->put('some.users', 'Tom');
+        $this->assertEquals([
+            'some' => [
+                'users' => 'Tom',
+            ]
+        ], $config->getAll());
+
+        $config->put('some.users.Tom.email', 'contact@tomwright.me');
+        $this->assertEquals([
+            'some' => [
+                'users' => [
+                    'Tom' => [
+                        'email' => 'contact@tomwright.me',
+                    ],
+                ],
+            ]
+        ], $config->getAll());
+    }
+
 }
