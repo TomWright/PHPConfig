@@ -1,6 +1,7 @@
 # Config
 
 [![Build Status](https://travis-ci.org/TomWright/PHPConfig.svg?branch=master)](https://travis-ci.org/TomWright/PHPConfig)
+[![Test Coverage](https://codeclimate.com/github/TomWright/PHPConfig/badges/coverage.svg)](https://codeclimate.com/github/TomWright/PHPConfig/coverage)
 [![Latest Stable Version](https://poser.pugx.org/tomwright/php-config/v/stable)](https://packagist.org/packages/tomwright/php-config)
 [![Total Downloads](https://poser.pugx.org/tomwright/php-config/downloads)](https://packagist.org/packages/tomwright/php-config)
 [![Monthly Downloads](https://poser.pugx.org/tomwright/php-config/d/monthly)](https://packagist.org/packages/tomwright/php-config)
