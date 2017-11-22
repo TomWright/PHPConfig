@@ -134,3 +134,4 @@ If you would like to create a Config Reader please feel free. The only requireme
 If you have already created a Config Reader and would like it to appear here, please submit a pull request.
 
 - [PHPFileReader](/docs/PHPFileReader.md)
+- [JSONFileReader](/docs/JSONFileReader.md)

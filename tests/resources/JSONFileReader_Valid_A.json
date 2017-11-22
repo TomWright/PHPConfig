@@ -1,0 +1,14 @@
+{
+  "contacts": [
+    {
+      "name": "Tom"
+    },
+    {
+      "name": "Jim"
+    },
+    {
+      "name": "Jess"
+    }
+  ],
+  "primaryContact": "Tom"
+}
