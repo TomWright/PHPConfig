@@ -27,4 +27,32 @@ class ConfigTest extends TestCase
         $this->assertEquals($config->get('some..config.....item'), 'my_value');
     }
 
+    public function testSettingSeparatorInOptions()
+    {
+        $config = new Config([
+            'separator' => '|',
+        ]);
+
+        $this->assertEquals('|', $config->getSeparator());
+    }
+
+    public function testSettingStoreInOptions()
+    {
+        $config = new Config([
+            'store' => [
+                'item-1' => true,
+            ],
+        ]);
+
+        $this->assertEquals([
+            'item-1' => true,
+        ], $config->getAll());
+
+        $config->put('item-2', 'asd');
+        $this->assertEquals([
+            'item-1' => true,
+            'item-2' => 'asd',
+        ], $config->getAll());
+    }
+
 }
